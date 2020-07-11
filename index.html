@@ -1509,6 +1509,8 @@
         <p><span>[θ]:(th)：</span><a href='#JFKXn'><span>辅音</span></a><span> [s] 的发音，清辅音声带 </span><strong><span>不震动 </span></strong><span>然后稍微咬住你的舌头读出来</span><br><span>[ð]:(th)：辅音 [z] 的发音，然后稍微咬住你的舌头读出来</span><br><span>[ŋ]:(n、ng)：辅音 [n] 的发音是前鼻音，用 [n]后鼻音读出来即可</span></p>
     </div>
 
+
+
     <script src="jquery.min.js"></script>
     <script type="text/javascript">
         $(function(){
@@ -1519,12 +1521,23 @@
                 var ipa = ipa_list[i];
                 var classz = ".ipa_"+ipa;
                 var file = "mp3/"+ ipa +".mp3"
-                const data = {ipa, classz, file}
+
+                const obj = {ipa, classz, file, showToast: (text)=>{
+                    var div_str = `<div style="position: fixed; top:10px; right: 10px; width: 200px; height: 50px; background: rgba(0,0,0,0.7); border-radius: 10px; color: #ffffff; display: flex; justify-content: center; align-items: center;">
+                            ${text}
+                        </div>`
+                    var div = $(div_str);
+                    $('body').append(div);
+                    setTimeout(()=>{
+                        div.remove() 
+                    }, 1500);
+                }}
 
                 $(classz).click(function(){
-                    console.log(data)
-                    var audio = new Audio(data.file);
+                    console.log(obj)
+                    var audio = new Audio(obj.file);
                     audio.play();//播放
+                    obj.showToast("当前播放的音标为："+obj.ipa);
                 });
             }
 
