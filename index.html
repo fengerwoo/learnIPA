@@ -1462,18 +1462,20 @@
                 <span>短元音及之后：音标: (相关字母组合举例)：说明</span></p>
         </blockquote><br>
         <p><a name="u7vWb"></a></p>
+        
         <h4><a name="辅音掐头法" class="md-header-anchor"></a><span>辅音掐头法</span></h4>
-        <p><span style="color: #d66467">本文以下 [音标] 的文字，👆点击即可播放声音</span><br><span>去掉头的元音[e]，然后读出来：</span><br><span>F、L、M、N、S、X</span><br><span><ipa class="ipa_f">[f]<ipa>、[l]、[m] 、[n]、[s]、[ks]</span><br></p>
+        <p><span style="color: #d66467">本文以下 [音标] 的文字，👆点击即可播放声音</span><br><span>去掉头的元音[e]，然后读出来：</span><br><span>F、L、M、N、S、X</span><br><span><ipa class="ipa_f">[f]</ipa>、<ipa class="ipa_l">[l]</ipa>、<ipa class="ipa_m">[m]</ipa>、<ipa class="ipa_n">[n]</ipa>、<ipa class="ipa_s">[s]</ipa>、<ipa class="ipa_k">[k</ipa><ipa class="ipa_s">s]</ipa></span><br></p>
         <p><a name="JFKXn"></a></p>
         <h4><a name="辅音去尾法" class="md-header-anchor"></a><span>辅音去尾法</span></h4>
-        <p><span>去掉尾的元音[e]</span><br><span>B、C、D、J、K、P、T、V、Z</span><br><span>[b]、</span>[<span>s</span>][k]<span>、[d]、[dʒ]、[k]、[p]、[t]、[v]、[z]</span></p>
+        <p><span>去掉尾的元音[e]</span><br><span>B、C、D、J、K、P、T、V、Z</span><br><span><ipa class="ipa_b">[b]</ipa>、<ipa class="ipa_s">[s]</ipa> <ipa class="ipa_k">[k]</ipa> 、<ipa class="ipa_d">[d]</ipa>、<ipa class="ipa_dʒ">[dʒ]</ipa>、<ipa class="ipa_k">[k]</ipa>、<ipa class="ipa_p">[p]</ipa> 、<ipa class="ipa_t">[t]</ipa>、<ipa class="ipa_v">[v]</ipa>、<ipa class="ipa_z">[z]</ipa> </span></p>
         <p><a name="u7Fq2"></a></p>
+        <!-- <ipa class="ipa_">[]</ipa> -->
         <h4><a name="短元音" class="md-header-anchor"></a><span>短元音</span></h4>
         <p><span>读类似汉语拼音：ai、ei、y，嘴巴张开高度不同</span></p>
         <blockquote>
             <p>&nbsp;</p>
         </blockquote>
-        <p><span>[æ]: (a)三个手指宽度</span><br><span>[e]: (e) 两个手指宽度</span><br><span>[i]: (i)一个手指宽度</span><br></p>
+        <p><span><ipa class="ipa_æ">[æ]</ipa>: (a)三个手指宽度</span><br><span><ipa class="ipa_e">[e]</ipa>: (e) 两个手指宽度</span><br><span><ipa class="ipa_ɪ">[i]</ipa>: (i)一个手指宽度</span><br></p>
         <blockquote>
             <p><span>以下和汉语拼音联系起来，略有不同</span></p>
         </blockquote>
@@ -1522,27 +1524,29 @@
                 var classz = ".ipa_"+ipa;
                 var file = "mp3/"+ ipa +".mp3"
 
-                const obj = {ipa, classz, file, showToast: (text)=>{
-                    var div_str = `<div style="position: fixed; top:10px; right: 10px; width: 200px; height: 50px; background: rgba(0,0,0,0.7); border-radius: 10px; color: #ffffff; display: flex; justify-content: center; align-items: center;">
-                            ${text}
-                        </div>`
-                    var div = $(div_str);
-                    $('body').append(div);
-                    setTimeout(()=>{
-                        div.remove() 
-                    }, 1500);
-                }}
-
-                $(classz).click(function(){
+                const obj = {ipa, classz, file, }
+                console.log("注册点击事件" ,obj)
+                $(obj.classz).click(function(){
                     console.log(obj)
                     var audio = new Audio(obj.file);
                     audio.play();//播放
-                    obj.showToast("当前播放的音标为："+obj.ipa);
+                    showToast("当前播放的音标为："+obj.ipa);
                 });
             }
 
-            
+            function showToast(text){
+                var div_str = `<div style="position: fixed; top:10px; right: 10px; width: 200px; height: 50px; background: rgba(0,0,0,0.7); border-radius: 10px; color: #ffffff; display: flex; justify-content: center; align-items: center;">
+                        ${text}
+                    </div>`
+                var div = $(div_str);
+                $('body').append(div);
+                setTimeout(()=>{
+                    div.remove() 
+                }, 1500);
+            }
         })
+
+
     </script>
 
 </body>
